@@ -1,0 +1,6 @@
+streamlit
+tweepy
+sqlalchemy
+apscheduler
+python-dotenv
+requests
