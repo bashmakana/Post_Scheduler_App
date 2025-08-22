@@ -8,7 +8,6 @@ def twitter_oauth_ui(current_user_id: int):
 
     db_session: Session = database.SessionLocal()
 
-    # Check if user already has access tokens in session state
     access_token = st.session_state.get(twitter_oauth.ACCESS_TOKEN_KEY)
     access_token_secret = st.session_state.get(twitter_oauth.ACCESS_TOKEN_SECRET_KEY)
 

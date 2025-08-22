@@ -4,6 +4,10 @@ import tweepy
 from db import database, crud
 from ui.components import post_card, info_alert, success_alert
 from scheduler.post_scheduler import process_pending_posts
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 def view_posts_page():
     if st.button("Process Pending Posts", key="process_pending_btn"):
@@ -14,8 +18,8 @@ def view_posts_page():
             return post
         try:
             client = tweepy.Client(
-                consumer_key="wYJ7ysiCIq7dcgpUzIvrFWcA6",
-                consumer_secret="2d4qtiQ6Q8oUbweNREX4cIpi0f2ITmSon82JAKDDFb5AHb9kx8",
+                consumer_key=os.getenv("API_KEY"),
+                consumer_secret=os.getenv("API_SECRET"),
                 access_token=account.access_token,
                 access_token_secret=account.access_token_secret
             )

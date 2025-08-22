@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from db.database import Base  # ✅ import Base from database.py
+from db.database import Base 
 
 class User(Base):
     __tablename__ = "users"
@@ -21,10 +21,10 @@ class Post(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    platform = Column(String, nullable=False)  # 'x'
+    platform = Column(String, nullable=False) 
     content = Column(String, nullable=False)
     scheduled_time = Column(DateTime, nullable=False)
-    status = Column(String, default="pending")  # 'pending', 'posted', 'failed'
+    status = Column(String, default="pending") 
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # Engagement tracking
@@ -41,9 +41,9 @@ class SocialAccount(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    platform = Column(String, nullable=False)  # 'twitter', 'facebook', 'linkedin'
+    platform = Column(String, nullable=False) 
     access_token = Column(String, nullable=False)
-    access_token_secret = Column(String, nullable=True)  # ← ADD THIS
+    access_token_secret = Column(String, nullable=True)
     refresh_token = Column(String, nullable=True)
     token_expiry = Column(DateTime, nullable=True)
 
