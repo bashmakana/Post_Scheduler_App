@@ -5,6 +5,10 @@ import urllib.parse
 import webbrowser
 import tweepy
 import streamlit as st
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 from db import crud, database
 from sqlalchemy.orm import Session
@@ -20,8 +24,8 @@ def get_oauth1_user_handler(account):
     )
 
 
-API_KEY = "3N5NbdWUwER3iVNAqOTbejczJ"  
-API_SECRET = "FrqJnF7Nz9MNpVFzbZLkS4NHYwfi5Rjv7DAh2bzVbnkRcdvekq"
+API_KEY = os.getenv("API_KEY")
+API_SECRET = os.getenv("API_SECRET")
 CALLBACK_URL = "http://localhost:8000"
 
 OAUTH_REQUEST_TOKEN_KEY = "twitter_request_token"

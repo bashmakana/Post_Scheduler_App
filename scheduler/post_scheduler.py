@@ -5,6 +5,10 @@ from datetime import datetime
 import tweepy
 from oauth_clients import twitter_oauth
 import requests
+from  dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 def post_to_twitter(post, db_session, image_path=None):
     print("Retrieving user's access")
@@ -19,8 +23,8 @@ def post_to_twitter(post, db_session, image_path=None):
     try:
         print("Here now (v2)")
         client = tweepy.Client(
-            consumer_key="3N5NbdWUwER3iVNAqOTbejczJ",
-            consumer_secret="FrqJnF7Nz9MNpVFzbZLkS4NHYwfi5Rjv7DAh2bzVbnkRcdvekq",
+            consumer_key=os.getenv("API_KEY"),
+            consumer_secret=os.getenv("API_SECRET"),
             access_token=account.access_token,
             access_token_secret=account.access_token_secret
         )
